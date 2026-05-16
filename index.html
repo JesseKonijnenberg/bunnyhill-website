@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bunny Meadow | Coming Soon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sage-50: #f8faf9;
+            --sage-100: #f1f5f3;
+            --sage-200: #e2eadd;
+            --forest-800: #163020;
+            --forest-900: #0b1a11;
+            --accent: #527853;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--sage-50);
+            color: var(--forest-900);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .serif {
+            font-family: 'Fraunces', serif;
+        }
+
+        @keyframes subtle-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .float-subtle {
+            animation: subtle-float 6s ease-in-out infinite;
+        }
+
+        .status-pulse {
+            position: relative;
+        }
+
+        .status-pulse::after {
+            content: '';
+            position: absolute;
+            left: -12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 0 0 rgba(82, 120, 83, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: translateY(-50%) scale(0.95); box-shadow: 0 0 0 0 rgba(82, 120, 83, 0.7); }
+            70% { transform: translateY(-50%) scale(1); box-shadow: 0 0 0 6px rgba(82, 120, 83, 0); }
+            100% { transform: translateY(-50%) scale(0.95); box-shadow: 0 0 0 0 rgba(82, 120, 83, 0); }
+        }
+
+        .card-blur {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(22, 48, 32, 0.05);
+        }
+
+        .link-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .link-hover:hover {
+            background-color: var(--forest-800);
+            color: white;
+            transform: translateX(4px);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-green-200">
+
+    <nav class="p-8 md:p-12 flex justify-between items-center w-full max-w-7xl mx-auto">
+        <div class="flex items-center gap-3">
+            <span class="font-semibold tracking-tight text-forest-800 text-lg uppercase">Bunnyhill.nl</span>
+        </div>
+        <div class="hidden md:block">
+            <span class="text-xs font-medium text-forest-800/40 uppercase tracking-widest">Est. 2026</span>
+        </div>
+    </nav>
+
+    <main class="px-6 flex-grow flex flex-col items-center justify-center text-center">
+        <div class="max-w-2xl w-full">
+            <span class="status-pulse text-xs font-bold uppercase tracking-[0.2em] text-emerald-800/60 mb-6 inline-block">
+                Currently Planting Seeds
+            </span>
+            
+            <h1 class="serif text-5xl md:text-7xl text-forest-900 leading-tight mb-8">
+                A digital space for <br>
+                <span class="italic text-forest-800/70">ideas to grow.</span>
+            </h1>
+
+            <p class="text-forest-900/60 text-lg md:text-xl font-light leading-relaxed mb-12 max-w-lg mx-auto">
+                I'm currently building a new home for my projects and writing. This domain will be live soon.
+            </p>
+        </div>
+    </main>
+
+    <footer class="p-8 md:p-12 w-full max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="text-xs text-forest-800/40 uppercase tracking-widest order-2 md:order-1">
+            2026 Bunnyhill
+        </div>
+
+        <div class="text-xs text-forest-800/40 uppercase tracking-widest order-3">
+            Designed for the web.
+        </div>
+    </footer>
+
+    <script>
+        // A simple script to change the status message randomly on load
+        const statuses = [
+            "Currently Planting Seeds",
+            "Tending the Garden",
+            "Waiting for the Rain",
+            "Designing the Meadow",
+            "Building something quiet"
+        ];
+
+        window.onload = () => {
+            const statusEl = document.querySelector('.status-pulse');
+            const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
+            statusEl.innerText = randomStatus;
+            
+            // Add a simple console easter egg
+            console.log("%c 🐰 Welcome to the Bunny Meadow.", "color: #163020; font-weight: bold; font-size: 14px;");
+        };
+    </script>
+</body>
+</html>
